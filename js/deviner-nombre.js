@@ -17,20 +17,34 @@
 function tireNombre(min, max) {
     return Math.floor(Math.random() * (max - min) + min);
 }
-console.log(tireNombre(1,100));
+
 
 let nbMystere = tireNombre(1, 100);
-
-let reponse = Number(prompt("Entrez un nombre situé entre 1 et 100"));
+let nbEssai = 0;
+let reponse ="";
+let message ="Entrez un nombre situé entre 1 et 100";
+console.log(tireNombre(1,100));
 
 do {
-    if (reponse < nbMystere) {
-        prompt("Plus grand !")
+    let reponse = Number(prompt(message));
+
+
+    if (reponse === nbMystere) {
+        if (nbEssai === 1){
+            alert("Félicitations, vous avez trouvé du premier coup !");
+        }
+        else
+        {
+            alert("Félicitations, vous avez trouvé en " + nbEssai + " essais");
+        }
+    }
+    else if (reponse < nbMystere) {
+        alert("Plus grand !")
     }
     else {
-        prompt("Plus petit !")
+        alert("Plus petit !")
     }
-
+    nbEssai++
 } while (reponse !== nbMystere)
 
 
